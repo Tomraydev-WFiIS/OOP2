@@ -1,0 +1,32 @@
+Na tablicy napisane są dwa ciągi zer i jedynek. Chcemy teraz w każdym z tych ciągów skreślić niektóre cyfry tak, żeby pozostałe ciągi były takie same oraz były uporządkowane, tj. po pierwszym wystąpieniu jedynki nie może już wystąpić żadne zero (czyli np. 0000111111). Jaki najdłuższy ciąg może pozostać na tablicy? Na wejściu podane są długości obu ciągów oraz same ciągi np:
+
+4 4
+0 1 0 1
+0 0 1 1
+
+daje wynik:
+3
+[ bo taki sam ciąg to : 0 1 1 i powstaje on z pierwszego poprzez skreślenie ostatniego 0 oraz z drugiego poprzez skreślenie pierwszego zera]
+
+inny przykład:
+5 5
+0 1 0 1 1
+0 1 1 0 0
+daje wynik:
+3
+[ ciąg: 0 1 1] 
+
+Przykład jak można wczytać dane z klawiatury:
+
+import java.util.Scanner;
+
+public class input_test
+{
+ public static void main(String[] args)
+ {
+  Scanner in = new Scanner(System.in);
+  int x = in.nextInt();
+  int y = in.nextInt();
+  System.out.println(x+"+"+y+"="+(x+y));
+ }
+}

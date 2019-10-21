@@ -13,7 +13,7 @@ program: $(SRC)
 .PHONY: run clean
 
 run:
-	java $(NAME)
+	java $(NAME) < test.txt
 
 clean:
 	rm -f *.class
