@@ -1,3 +1,9 @@
+package pl.edu.agh.fis.alfa; //Przykład: kod pakietu pl.edu.agh.fis.alfa umieszczamy w katalogu pl/edu/agh/fis/alfa/<nazwaKlasy>
+
+import java.util.Date;
+import java.util.*;
+import static java.lang.Math.PI; // pozwala na używanie nazw statycznych składników klas bez podawania nazwy klasy
+
 public class notes {
     public static void main(String args[]){
 		  hello();
@@ -8,25 +14,44 @@ public class notes {
     }
 }
 
-public class Klasa {
+public class Klasa extends KlasaBazowa { //przed inicjalizacją obiektu klasy pochodnej automatycznie wywoływany jest konstruktor domyślny klasy podstawowej;
   int n;
-  Klasa() {
-    // Konstruktor
+  Klasa() { // Konstruktor
+    super(arg1, arg2); // uruchomienie innego konstruktora - musi byc pierwszą instrukcją konstruktora
+    member = super.member; // dostep do skladnikow klasy bazowej
   }
 
-  Klasa(Klasa obj) {
-    // Konstruktor kopiujący
+  Klasa(int arg1) { // Konstruktor
+    this(arg1, arg1); // Wywolanie innego konstruktora z tej samej klasy
+  }
+
+  Klasa(int arg1, int arg2) { // Konstruktor
+  }
+
+
+  Klasa(Klasa obj) { // Konstruktor kopiujący
     n = obj.n;
   }
 
-  {
-    // Blok inicjalizujacy - moze też byc statyczny
+  { // Blok inicjalizujacy - moze też byc statyczny
     n = 5;
   }
 
+  public String toString() {// warto zaimplementować
+  }
+
   static int metoda_statyczna(){ return 1;}
+
 }
 
+abstract class A {
+  //• każda klasa zwierająca jedną lub więcej metod abstrakcyjnych jest klasą abstrakcyjną i musi być zdefiniowana z użyciem modyfikatora abstract
+  abstract String opis(); // metoda abstrakcyjna
+
+  // • klasa dziedzicząca po klasie abstrakcyjnej musi
+  //   – albo definiować wszystkie abstrakcyjne metody z klasy podstawowej,
+  //   – albo również pozostać abstrakcyjna
+}
 
 // DATA TYPES
 int – 32-bitowa liczba całkowita (zakres −2^31 ÷ 2^31 − 1)
@@ -38,6 +63,9 @@ double – 64-bitowa liczba zmiennoprzecinkowa (precyzja ok. 15 cyfr)
 char – 16-bitowy znak kodowany jako Unicode (inaczej niż w C++! – łatwo operować na znakach narodowych itp.)
 boolean – typ logiczny (odpowiednik bool z C++), może przechowywać wartości true lub false
 void
+
+// ARRAYS
+int[][] tab = new int[10][10];
 
 // LIBRARIES
 Math.sqrt();
@@ -61,3 +89,16 @@ final // - klasy, metody, pola i zmienne
   ! Uwaga: w przypadku referencji niezmienność dotyczy samej referencji, a nie obiektu, na który ona pokazuje.
   Zastrzeżenie to dotyczy także tablic (które są zawsze obiektami)
 */
+
+// FILE HANDLING 
+try {
+  BufferedReader f = new BufferedReader(new FileReader("plik.txt") ); // buffering speeds things up
+  String s;
+  int i = 1;
+  while( (s = f.readLine()) != null ){
+    System.out.println( (i++) + " : " + s );
+  }
+}
+catch( Throwable e ) { // !!
+  System.out.println( "Blad odczytu pliku!" );
+}
