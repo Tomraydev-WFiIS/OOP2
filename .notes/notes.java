@@ -1,6 +1,6 @@
 public class notes {
     public static void main(String args[]){
-		hello();
+		  hello();
     }
     public static void hello(){
         String s = new String("Hello World!");
