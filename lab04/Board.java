@@ -1,4 +1,11 @@
 public class Board {
+    /**
+     * Game of life board - no overlap
+     * @param x horizontal size
+     * @param y vertical size
+     * @param preset_id starting board configuration
+    */
+    
     int size_x;
     int size_y;
     char[][] board;
@@ -16,6 +23,9 @@ public class Board {
     }
 
     public void clear(){
+        /**
+         * Clear the board (change all fields to '.')
+        */
         for(int y = 0; y < size_y; y++){
             for(int x = 0; x < size_x; x++){
                 board[y][x] = '.';
@@ -24,6 +34,9 @@ public class Board {
     }
 
     public void print(){
+        /**
+         * Print the board to stdout
+        */
         for(int y = 0; y < size_y; y++){
             for(int x = 0; x < size_x; x++){
                 System.out.print(board[y][x]);
@@ -33,6 +46,9 @@ public class Board {
     }
 
     public void printDebug(){
+        /**
+         * Print the debug board - number of alive neighbours for each field
+        */
         for(int y = 0; y < size_y; y++){
             System.out.print("\t");
             for(int x = 0; x < size_x; x++){
@@ -43,9 +59,13 @@ public class Board {
     }
 
     public void run(int steps){
+        /**
+         * Run the simulation
+         * @param steps number of steps
+        */
         System.out.println("------ 0 --------");
         print();
-        for(int s = 1; s < steps; s++){
+        for(int s = 1; s <= steps; s++){
             for(int y = 0; y < size_y; y++){
                 for(int x = 0; x < size_x; x++){
 
@@ -69,13 +89,19 @@ public class Board {
                 }
             }
             copyBoard();
-            System.out.println("\n------ " + s + " --------");
+            System.out.println("------ " + s + " --------");
             // printDebug();
             print();
         }
     }
 
-    public int getValue(int x, int y){
+    private int getValue(int x, int y){
+        /**
+         * Get the value of a field
+         * @param x x coordinate
+         * @param y y coordinate
+         * @return 1 if alive, 0 if dead
+        */
         if(x < 0 || x >= size_x || y < 0 || y >= size_y){
             return 0;
         }
@@ -86,7 +112,10 @@ public class Board {
         }
     }
 
-    public void copyBoard(){
+    private void copyBoard(){
+        /**
+         * Save the generated 'board2' to the current 'board'
+        */
         for(int y = 0; y < size_y; y++){
             for(int x = 0; x < size_x; x++){
                 board[y][x] = board2[y][x];
@@ -95,6 +124,10 @@ public class Board {
     }
 
     public void preset(int id){
+        /**
+         * Set board configuration depending on id
+         * @param id configuration id
+        */
         int xc = size_x/2; // x center
         int yc = size_y/2; // y center
         switch(id){
@@ -108,6 +141,7 @@ public class Board {
                         }
                     }
                 }
+                break;
 
             case 1:
                 board[yc-1][xc-1] = 'X';
@@ -121,11 +155,13 @@ public class Board {
                 board[yc+1][xc-1] = '.';
                 board[yc+1][xc] = 'X';
                 board[yc+1][xc+1] = '.';
+                break;
 
             case 2:
                 board[yc-1][xc] = 'X';
                 board[yc][xc] = 'X';
                 board[yc+1][xc] = 'X';
+                break;
 
             case 3:
                 board[yc-1][xc-1] = 'X';
@@ -139,6 +175,7 @@ public class Board {
                 board[yc+1][xc-1] = '.';
                 board[yc+1][xc] = 'X';
                 board[yc+1][xc+1] = '.';
+                break;
         }
     }
 }

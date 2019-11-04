@@ -13,7 +13,11 @@ program: $(SRC)
 .PHONY: run clean
 
 run:
-	java $(NAME) 15 15 100 3
+	java $(NAME) 10 10 50 1 
 
 clean:
 	rm -f *.class
+	rm -rf docs
+
+docs:
+	javadoc -d docs Board.java
