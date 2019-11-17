@@ -102,3 +102,64 @@ try {
 catch( Throwable e ) { // !!
   System.out.println( "Blad odczytu pliku!" );
 }
+
+// INTERFACES
+interface Pisze {
+  void pisz(); // <-- public !
+  String s = "[Pisze]"; // <-- static final !
+}
+class Rzecz implements Pisze {
+  // void pisz() { ... } /* ZLE! */
+  public void pisz() { System.out.println("..Rzecz.."); }
+}
+Rzecz r = new Rzecz();
+System.out.print("r.pisz() : "); r.pisz();
+System.out.println("r.s=" + r.s + " Pisze.s=" + Pisze.s);
+
+interface ZwracaLiczbeInt {
+  int liczbaInt();
+}
+// implements many interfaces
+class Rzecz implements Pisze, ZwracaLiczbeInt {
+  public void pisz() { System.out.println("..Rzecz.."); }
+  public int liczbaInt() { return 99; }
+}
+
+// DEFAULT METHODS
+interface NazwaInterfejsu {
+  default nazwaMetody(...) {
+    // definicja/ciało metody
+  }
+}
+
+interface Dzialanie { // nowa, zmieniona wersja
+  double wykonaj(double a);
+  default double wykonajLogujac(double a) {
+    System.out.println("[log] wykonaj("+a+")");
+    return wykonaj(a);
+  }
+}
+
+// NESTED CLASSES
+// klasy zdefiniowane wewnątrz innych klas (nested classes):
+// – “zwykłe” (niestatyczne, inner classes)
+// – statyczne (static nested classes)
+// – lokalne (wewnątrz metod)
+// – anonimowe
+
+public class Dane {
+  class Liczba { double wartosc; }
+  class Opis { String tekst = "pi"; }
+  public Liczba toLiczba(double x) {
+    Liczba l = new Liczba();
+    l.wartosc = x;
+    return l;
+  }
+  public void pokaz() {
+    Liczba l = toLiczba(3.14159);
+    Opis o = new Opis();
+    System.out.println( o.tekst
+    + " = " + l.wartosc );
+  }
+}
+new Dane().pokaz();

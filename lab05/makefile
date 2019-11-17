@@ -21,6 +21,7 @@ test:
 clean:
 	rm -f *.class
 	rm -rf docs
+	rm output
 
 docs:
 	javadoc -d docs *.java
