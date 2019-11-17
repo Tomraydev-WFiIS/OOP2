@@ -1,4 +1,4 @@
-NAME = lab02
+NAME = lab05
 
 JC = javac
 JFLAGS = -g
@@ -13,7 +13,14 @@ program: $(SRC)
 .PHONY: run clean
 
 run:
-	java $(NAME)
+	java $(NAME) | tee output
+
+test:
+	diff --color output target
 
 clean:
 	rm -f *.class
+	rm -rf docs
+
+docs:
+	javadoc -d docs *.java
