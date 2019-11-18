@@ -1,5 +1,11 @@
+/** Square on a 2d surface */
 public class Square extends Point {
     protected double side;
+    /**
+    * @param side length of a side
+    * @param x x coordinate of a corner
+    * @param y y coordinate of a corner
+    */
     Square(double side, double x, double y){
         super(x, y);
         this.side = side;

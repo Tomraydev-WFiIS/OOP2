@@ -1,4 +1,4 @@
-NAME = lab05
+NAME = lab5
 
 JC = javac
 JFLAGS = -g
