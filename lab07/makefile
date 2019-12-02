@@ -12,11 +12,9 @@ program: $(SRC)
 
 .PHONY: run clean
 
-run:
-	java $(NAME) | tee output
-
 test:
-	diff --color output target
+	java $(NAME) < input1.txt
+	java $(NAME) < input2.txt
 
 clean:
 	rm -f *.class

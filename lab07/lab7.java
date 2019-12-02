@@ -8,9 +8,7 @@ import java.util.HashSet;
 
 public class lab7{
     public static void main(String[] argv) throws Exception{
-        File file = new File("input1.txt"); 
-        Scanner sc = new Scanner(file); 
-    
+        Scanner sc = new Scanner(System.in);     
         
         int n = sc.nextInt(); // number of elements
         int m = sc.nextInt(); // number of tests
@@ -44,8 +42,8 @@ public class lab7{
                 for(int j = 0; j < n/2; j++){
                     Set<Integer> s = items.get(g1.get(i));
                     s.add(g2.get(j));
-                    System.out.println("g1 = " + g1.get(i) + "\tg2 = " + g2.get(j));
-                    System.out.println("set for " + g1.get(i) + " " + s.toString() + "\n");
+                    // System.out.println("g1 = " + g1.get(i) + "\tg2 = " + g2.get(j));
+                    // System.out.println("set for " + g1.get(i) + " " + s.toString() + "\n");
                 }
             }
 
@@ -54,8 +52,8 @@ public class lab7{
                 for(int j = 0; j < n/2; j++){
                     Set<Integer> s = items.get(g2.get(i));
                     s.add(g1.get(j));
-                    System.out.println("g1 = " + g1.get(i) + "\tg2 = " + g2.get(j));
-                    System.out.println("set for " + g2.get(i) + " " + s.toString() + "\n");
+                    // System.out.println("g1 = " + g1.get(i) + "\tg2 = " + g2.get(j));
+                    // System.out.println("set for " + g2.get(i) + " " + s.toString() + "\n");
                 }
             }
         }
@@ -64,10 +62,10 @@ public class lab7{
         for(int i = 1; i < n+1; i++){
             if(items.get(i).size() != n-1){
                 System.out.println("NIE");
-                System.exit(1);
+                System.exit(0);
             }
         }
-        System.out.println(items.toString());
+        // System.out.println(items.toString());
         System.out.println("TAK");
     }
 }
